@@ -1,0 +1,13 @@
+# Write your MySQL query statement below
+select   Department,Employee ,salary
+from 
+(
+    SELECT  Department.name AS Department , Employee.name as  Employee, salary as Salary,
+    DENSE_RANK() over(
+      PARTITION BY Employee.departmentId
+        ORDER BY salary desc ) AS ranking
+    FROM Employee
+       LEFT JOIN Department
+    ON Employee.departmentId = Department.id
+) AS t
+WHERE ranking = 1;
