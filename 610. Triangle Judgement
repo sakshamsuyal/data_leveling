@@ -1,0 +1,10 @@
+-- Write your PostgreSQL query statement below
+select x,y,z,
+CASE
+   WHEN x+y>z
+   and z+y>x
+   and x+z>y 
+   THEN 'Yes'
+   else 'No'
+END as triangle 
+FROM Triangle;
